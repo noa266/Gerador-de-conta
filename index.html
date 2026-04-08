@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Gerador PRO</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    color: #39ff14;
+    font-size: 40px;
+}
+
+button {
+    background: #39ff14;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #2ecc71;
+}
+
+.box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>GERADOR ATUALIZADO PRO</h1>
+
+    <button onclick="gerar()">GERAR CONTAS</button>
+
+    <div class="box">
+        <label>Ativar gerador </label>
+        <input type="checkbox" id="toggle">
+    </div>
+
+    <div class="box">
+        <p><b>Email:</b> <span id="email">---</span></p>
+        <p><b>Senha:</b> <span id="senha">---</span></p>
+    </div>
+</div>
+
+<script>
+function gerar() {
+    let ativo = document.getElementById("toggle").checked;
+
+    if (!ativo) {
+        alert("Ative o gerador!");
+        return;
+    }
+
+    let letras = "abcdefghijklmnopqrstuvwxyz";
+    let numeros = "0123456789";
+
+    let nome = "";
+    for (let i = 0; i < 8; i++) {
+        nome += letras[Math.floor(Math.random() * letras.length)];
+    }
+
+    let numero = Math.floor(Math.random() * 1000);
+
+    let email = nome + numero + "@gmail.com";
+
+    let senha = "";
+    for (let i = 0; i < 8; i++) {
+        senha += letras[Math.floor(Math.random() * letras.length)];
+        senha += numeros[Math.floor(Math.random() * numeros.length)];
+    }
+
+    document.getElementById("email").innerText = email;
+    document.getElementById("senha").innerText = senha;
+}
+</script>
+
+</body>
+</html>
